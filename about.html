@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About Us — Adoviz Financial Consultancy</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body{animation:pageFade .6s ease}
+    .page-hero{background:radial-gradient(ellipse 70% 90% at 80% 50%,rgba(0,200,83,.18) 0%,transparent 65%),var(--g900);padding:120px 8% 80px;position:relative;overflow:hidden;color:white}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g500),var(--gold))}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.4);margin-bottom:22px}
+    .breadcrumb a{color:var(--g400)}
+    .breadcrumb span{opacity:.5}
+    .page-hero h1{font-family:'Playfair Display',serif;font-size:54px;line-height:1.15;font-weight:800;max-width:700px;margin-bottom:18px;animation:slideL .8s ease}
+    .page-hero h1 em{color:var(--g400);font-style:normal}
+    .page-hero>p{font-size:18px;color:rgba(255,255,255,.7);line-height:1.8;max-width:580px;animation:slideL .9s ease}
+
+    .story{padding:90px 8%;background:white}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;max-width:1200px;margin:auto}
+    .story-img-box{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--g900),var(--g700));border-radius:var(--rl);display:flex;align-items:center;justify-content:center;font-size:120px;opacity:.9;position:relative}
+    .story-badge-float{position:absolute;bottom:-22px;right:-22px;background:linear-gradient(135deg,var(--g500),var(--g400));color:var(--g900);padding:18px 24px;border-radius:var(--rm);font-weight:800;font-size:22px;box-shadow:0 12px 40px rgba(0,200,83,.4);text-align:center}
+    .story-badge-float small{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+    .story-text h2{font-family:'Playfair Display',serif;font-size:40px;font-weight:800;color:var(--g900);margin-bottom:18px;line-height:1.2}
+    .story-text p{color:var(--muted);line-height:1.85;font-size:16px;margin-bottom:16px}
+    .story-list{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:12px}
+    .story-list li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--text);font-weight:500}
+    .story-list li::before{content:'✓';width:24px;height:24px;min-width:24px;background:rgba(0,200,83,.15);color:var(--g500);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+
+    .stats-bar{background:var(--g900);padding:60px 8%;position:relative;overflow:hidden}
+    .stats-bar::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,200,83,.07) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+    .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1100px;margin:auto;text-align:center}
+    .stat-item h3{font-family:'Playfair Display',serif;font-size:48px;font-weight:800;color:var(--g500);margin-bottom:8px}
+    .stat-item p{font-size:14px;color:rgba(255,255,255,.6);font-weight:500;letter-spacing:.5px}
+
+    .values-section{padding:90px 8%;background:var(--g50);text-align:center}
+    .values-section h2{font-family:'Playfair Display',serif;font-size:40px;color:var(--g900);margin-bottom:14px}
+    .values-section .sub{color:var(--muted);max-width:560px;margin:0 auto 50px;line-height:1.75;font-size:16px}
+    .values-grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:auto}
+    .val-card{background:white;border:1px solid rgba(0,200,83,.12);border-radius:var(--rm);padding:38px 30px;text-align:left;transition:all var(--dur) var(--ease);position:relative;overflow:hidden}
+    .val-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g500),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--dur)}
+    .val-card:hover::after{transform:scaleX(1)}
+    .val-card:hover{transform:translateY(-8px);box-shadow:var(--sm);border-color:var(--g500)}
+    .val-icon{width:52px;height:52px;background:rgba(0,200,83,.12);border-radius:var(--rm);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--g500);font-size:22px;transition:all var(--dur)}
+    .val-card:hover .val-icon{background:var(--g500);color:var(--g900)}
+    .val-card h3{font-size:18px;font-weight:700;color:var(--g900);margin-bottom:10px}
+    .val-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+    .mission{padding:90px 8%;background:var(--g900);text-align:center;position:relative;overflow:hidden}
+    .mission::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,200,83,.07) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+    .mission h2{font-family:'Playfair Display',serif;font-size:42px;color:white;max-width:700px;margin:0 auto 18px;position:relative}
+    .mission .highlight{color:var(--g500)}
+    .mission>p{color:rgba(255,255,255,.6);max-width:600px;margin:0 auto 40px;line-height:1.8;font-size:16px;position:relative}
+    .mission .btn-main{position:relative}
+
+    .cta-strip{background:linear-gradient(135deg,var(--g700),var(--g900));padding:70px 8%;text-align:center;position:relative;overflow:hidden}
+    .cta-strip::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,200,83,.08) 1px,transparent 1px);background-size:24px 24px}
+    .cta-strip h2{font-family:'Playfair Display',serif;font-size:38px;color:white;margin-bottom:14px;position:relative}
+    .cta-strip p{color:rgba(255,255,255,.65);margin-bottom:36px;font-size:16px;position:relative}
+    .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative}
+    .btn-outline-white{padding:14px 32px;border:2px solid rgba(255,255,255,.35);border-radius:50px;color:white;font-weight:600;font-size:15px;transition:all var(--dur)}
+    .btn-outline-white:hover{background:white;color:var(--g900)}
+
+    @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:40px}.stats-inner{grid-template-columns:repeat(2,1fr)}.values-grid-6{grid-template-columns:1fr 1fr}.page-hero h1{font-size:38px}}
+    @media(max-width:600px){.values-grid-6{grid-template-columns:1fr}.page-hero h1{font-size:30px}}
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+  <div class="logo">Ado<span>viz</span></div>
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <nav class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html#contact" class="btn-light">Get Started</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>About Us</span></div>
+  <h1>The Trusted Financial <em>Partner</em> for Modern Businesses</h1>
+  <p>Adoviz is a premier financial consultancy helping Indian businesses navigate compliance, taxation and accounting with expert precision.</p>
+</section>
+
+<section class="story">
+  <div class="story-grid">
+    <div style="position:relative">
+      <div class="story-img-box">📊</div>
+      <div class="story-badge-float">8+ <small>Years of Excellence</small></div>
+    </div>
+    <div class="story-text">
+      <div class="section-tag">Our Story</div>
+      <h2>Built on Trust, Driven by Expertise</h2>
+      <p>Adoviz was founded with a singular vision — to make professional-grade financial services accessible to every Indian business, regardless of size. From startups to established enterprises, we've helped hundreds of organizations stay compliant and scale confidently.</p>
+      <p>Our CA-qualified team brings over 8 years of combined experience in accounting, GST, taxation, and business advisory. We don't just file returns — we partner with your growth.</p>
+      <ul class="story-list">
+        <li>500+ businesses served across India</li>
+        <li>CA-qualified professionals at every step</li>
+        <li>Pan-India digital-first service delivery</li>
+        <li>Dedicated account manager for every client</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><h3>500+</h3><p>Businesses Served</p></div>
+    <div class="stat-item"><h3>8+</h3><p>Years Experience</p></div>
+    <div class="stat-item"><h3>99%</h3><p>Accuracy Rate</p></div>
+    <div class="stat-item"><h3>24/7</h3><p>Expert Support</p></div>
+  </div>
+</section>
+
+<section class="values-section">
+  <div class="section-tag">Our Values</div>
+  <h2>What We Stand For</h2>
+  <p class="sub">Every interaction with Adoviz is guided by these core principles that define who we are.</p>
+  <div class="values-grid-6">
+    <div class="val-card"><div class="val-icon"><i class="fas fa-users"></i></div><h3>Client-Centric</h3><p>Your success is our priority. We deliver personalized solutions tailored to your unique financial needs and business goals.</p></div>
+    <div class="val-card"><div class="val-icon"><i class="fas fa-check-double"></i></div><h3>Accuracy First</h3><p>Precise accounting with complete regulatory compliance — zero errors, zero penalties, and zero compromise on quality.</p></div>
+    <div class="val-card"><div class="val-icon"><i class="fas fa-rocket"></i></div><h3>Growth-Driven</h3><p>Financial strategies that empower your business to scale confidently and sustainably in today's competitive environment.</p></div>
+    <div class="val-card"><div class="val-icon"><i class="fas fa-shield-halved"></i></div><h3>Confidentiality</h3><p>Your data is safe, encrypted and handled with strict privacy standards. We maintain the highest level of trust.</p></div>
+    <div class="val-card"><div class="val-icon"><i class="fas fa-lightbulb"></i></div><h3>Innovation</h3><p>Modern tools and smart automation delivering better, faster and more reliable financial management results.</p></div>
+    <div class="val-card"><div class="val-icon"><i class="fas fa-handshake"></i></div><h3>Partnership</h3><p>We build lasting relationships with ongoing support and guidance long after the service is complete.</p></div>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="section-tag" style="background:rgba(0,200,83,.15);color:var(--g400)">Our Mission</div>
+  <h2>Empowering Every Indian Business to <span class="highlight">Thrive Financially</span></h2>
+  <p>We believe every business deserves access to world-class financial guidance. Our mission is to bridge the gap between complex compliance requirements and the day-to-day reality of running a business in India.</p>
+  <a href="index.html#contact" class="btn-main">Work With Us &nbsp;→</a>
+</section>
+
+<section class="cta-strip">
+  <h2>Ready to Simplify Your Finances?</h2>
+  <p>Join 500+ businesses who trust Adoviz for their accounting, GST, and financial needs.</p>
+  <div class="cta-buttons">
+    <a href="index.html#contact" class="btn-main">Get Free Consultation &nbsp;→</a>
+    <a href="services.html" class="btn-outline-white">Explore Services</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col"><div class="footer-logo">Ado<span>viz</span></div><p>Smart accounting, GST filing and financial consultancy for modern Indian businesses.</p><div class="footer-socials"><a class="footer-social" href="#">in</a><a class="footer-social" href="#">𝕏</a><a class="footer-social" href="#">ig</a></div></div>
+    <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="accounting.html">Accounting</a><a href="gst.html">GST Filing</a><a href="consultancy.html">Consultancy</a><a href="payroll.html">Payroll</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="#">📍 New Delhi, India</a><a href="tel:+919876543210">📞 +91 98765 43210</a><a href="mailto:support@adoviz.com">✉ support@adoviz.com</a></div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom"><span>© 2026 Adoviz. All Rights Reserved.</span><span>Made with ❤ in India</span></div>
+</footer>
+
+<script>
+window.addEventListener("scroll",()=>{ document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>60); });
+const toggle=document.getElementById("menu-toggle"),navLinks=document.getElementById("nav-links");
+toggle.onclick=()=>{ navLinks.classList.toggle("active"); toggle.textContent=navLinks.classList.contains("active")?"✕":"☰"; };
+document.querySelectorAll(".nav-links a").forEach(a=>{ a.addEventListener("click",()=>{ navLinks.classList.remove("active"); toggle.textContent="☰"; }); });
+const io=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("show"); }); },{threshold:0.08});
+document.querySelectorAll("section,.val-card,.stat-item").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

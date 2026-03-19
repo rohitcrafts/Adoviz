@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Services | Adoviz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--g900:#051f14;--g800:#0a3320;--g700:#0f4a2e;--g500:#00c853;--g400:#26de6e;--g100:#e8fef2;--g50:#f4fff9;--gold:#f0b429;--text:#111827;--muted:#6b7280;--border:rgba(0,200,83,.18);--glass:rgba(255,255,255,.05);--rm:18px;--rl:28px;--rxl:42px;--ss:0 4px 16px rgba(5,31,20,.10);--sm:0 10px 40px rgba(5,31,20,.16);--sl:0 24px 64px rgba(5,31,20,.22);--ease:cubic-bezier(.4,0,.2,1);--dur:.34s}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--g50);color:var(--text);overflow-x:hidden;animation:pageFade .6s ease}
+a{text-decoration:none}
+@keyframes pageFade{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:0 8%;height:72px;background:rgba(5,31,20,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000}
+.logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:white;letter-spacing:1px}
+.logo span{color:var(--g500)}
+nav ul{display:flex;list-style:none;gap:30px;align-items:center}
+nav ul li a{color:rgba(255,255,255,.8);font-weight:500;font-size:15px;position:relative;transition:color var(--dur)}
+nav ul li a:hover{color:white}
+nav ul li a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--g500);border-radius:2px;transition:width var(--dur)}
+nav ul li a:hover::after{width:100%}
+.nav-cta{background:var(--g500);color:var(--g900)!important;padding:9px 22px;border-radius:50px;font-weight:700!important}
+.nav-cta::after{display:none!important}
+.menu{display:none;font-size:26px;cursor:pointer;color:white;background:none;border:none}
+
+.services-hero{background:radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,200,83,.16) 0%,transparent 70%),var(--g900);padding:90px 8% 80px;color:white;position:relative;overflow:hidden;animation:fadeUp .9s ease}
+.services-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.services-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g500),var(--gold))}
+.hero-inner{max-width:720px;position:relative;z-index:1}
+.section-tag{display:inline-block;background:rgba(0,200,83,.15);color:var(--g400);padding:6px 18px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:18px;border:1px solid rgba(0,200,83,.3)}
+.services-hero h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:800;margin-bottom:20px;line-height:1.1}
+.services-hero h1 em{font-style:normal;color:var(--g500)}
+.services-hero p{font-size:18px;color:rgba(255,255,255,.72);line-height:1.8;max-width:580px}
+
+/* SERVICE CARDS DARK */
+.services-section{background:var(--g900);padding:90px 8%;text-align:center;position:relative;overflow:hidden}
+.services-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,200,83,.07) 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+.sec-label{display:inline-block;background:rgba(0,200,83,.15);color:var(--g400);padding:6px 18px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:18px;border:1px solid rgba(0,200,83,.3)}
+.services-section h2{font-family:'Playfair Display',serif;font-size:42px;color:white;margin-bottom:12px}
+.services-section>p{color:rgba(255,255,255,.55);margin-bottom:56px;font-size:16px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:auto}
+.service-card{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--border);padding:38px 30px;border-radius:var(--rm);transition:all var(--dur);color:white;text-align:left;cursor:pointer;position:relative;overflow:hidden;opacity:0;transform:translateY(40px)}
+.service-card.show{opacity:1;transform:translateY(0)}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g500),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--dur)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-card:hover{border-color:var(--g500);transform:translateY(-10px);box-shadow:0 24px 60px rgba(0,200,83,.18);background:rgba(0,200,83,.08)}
+.sc-icon{font-size:38px;margin-bottom:20px}
+.service-card h3{font-size:20px;font-weight:600;margin-bottom:10px}
+.service-card p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:20px}
+.sc-link{color:var(--g500);font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:gap var(--dur)}
+.service-card:hover .sc-link{gap:10px}
+
+/* PROCESS */
+.process-section{background:white;padding:90px 8%;text-align:center}
+.p-label{display:inline-block;background:var(--g100);color:var(--g700);padding:6px 18px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:18px}
+.process-section h2{font-family:'Playfair Display',serif;font-size:42px;color:var(--g900);margin-bottom:12px}
+.process-section>p{color:var(--muted);margin-bottom:56px;font-size:16px;max-width:520px;margin-left:auto;margin-right:auto}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1100px;margin:auto;position:relative}
+.process-grid::before{content:'';position:absolute;top:40px;left:15%;right:15%;height:2px;background:linear-gradient(90deg,var(--g500),var(--gold));z-index:0}
+.process-step{background:var(--g50);border:1px solid rgba(0,200,83,.15);padding:36px 24px;border-radius:var(--rm);transition:all var(--dur);position:relative;z-index:1;opacity:0;transform:translateY(40px)}
+.process-step.show{opacity:1;transform:translateY(0)}
+.process-step:hover{border-color:var(--g500);transform:translateY(-8px);box-shadow:var(--sm)}
+.step-num{width:48px;height:48px;background:var(--g500);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--g900);margin:0 auto 18px}
+.process-step h3{font-size:17px;font-weight:600;color:var(--g900);margin-bottom:8px}
+.process-step p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* CTA */
+.cta-section{background:var(--g50);padding:80px 8%;text-align:center}
+.cta-box{background:linear-gradient(140deg,var(--g900) 0%,#0d4228 100%);border-radius:var(--rxl);padding:70px 50px;max-width:860px;margin:auto;color:white;position:relative;overflow:hidden;box-shadow:var(--sl)}
+.cta-box::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px}
+.cta-box::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g500),var(--gold))}
+.cta-box h2{font-family:'Playfair Display',serif;font-size:36px;margin-bottom:14px;position:relative}
+.cta-box p{color:rgba(255,255,255,.72);margin-bottom:32px;font-size:16px;line-height:1.75;position:relative;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-main{display:inline-flex;align-items:center;gap:8px;padding:15px 38px;border:none;border-radius:50px;background:linear-gradient(135deg,var(--g500),var(--g400));color:var(--g900);font-weight:700;font-size:15px;cursor:pointer;transition:all var(--dur);font-family:'Outfit',sans-serif;box-shadow:0 4px 20px rgba(0,200,83,.35);position:relative}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,200,83,.45)}
+
+footer{background:var(--g900);padding:36px 8%;text-align:center;color:rgba(255,255,255,.4);font-size:13px;border-top:1px solid var(--border)}
+footer span{color:var(--g500)}
+
+@media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr}.process-grid{grid-template-columns:1fr 1fr}.process-grid::before{display:none}}
+@media(max-width:768px){.menu{display:block}nav{position:fixed;top:0;right:-100%;width:250px;height:100vh;background:var(--g900);display:flex;align-items:center;justify-content:center;transition:.4s;z-index:999}nav ul{flex-direction:column;gap:28px}nav.active{right:0}.services-hero h1{font-size:36px}.services-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Ado<span>viz</span></div>
+  <nav id="nav"><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+  </ul></nav>
+  <button class="menu" onclick="document.getElementById('nav').classList.toggle('active')">☰</button>
+</header>
+
+<div class="services-hero">
+  <div class="hero-inner">
+    <div class="section-tag">Our Services</div>
+    <h1>Comprehensive <em>Financial Services</em> for Every Stage</h1>
+    <p>From day-one compliance to enterprise-scale finance outsourcing — we have a solution for every business need.</p>
+  </div>
+</div>
+
+<section class="services-section">
+  <div class="sec-label">What We Offer</div>
+  <h2>All Services at a Glance</h2>
+  <p>Professional, transparent and affordable financial services for businesses of every size</p>
+  <div class="services-grid">
+    <a href="accounting.html" class="service-card"><div class="sc-icon">🧮</div><h3>Accounting</h3><p>Complete bookkeeping, ledger management, balance sheets, P&L reports and daily transaction tracking.</p><div class="sc-link">Learn More →</div></a>
+    <a href="gst.html" class="service-card"><div class="sc-icon">🧾</div><h3>GST & Tax Filing</h3><p>Accurate monthly/quarterly GST returns, TDS filing, income tax preparation and compliance monitoring.</p><div class="sc-link">Learn More →</div></a>
+    <a href="consultancy.html" class="service-card"><div class="sc-icon">📈</div><h3>Business Consultancy</h3><p>Financial planning, risk assessment, growth strategies and expert advisory for scaling businesses.</p><div class="sc-link">Learn More →</div></a>
+    <a href="payroll.html" class="service-card"><div class="sc-icon">💸</div><h3>Payroll Management</h3><p>Automated salary processing, payslip generation, PF/ESI compliance and full employee records management.</p><div class="sc-link">Learn More →</div></a>
+    <a href="index.html#contact" class="service-card"><div class="sc-icon">🏢</div><h3>Business Registration</h3><p>Company incorporation, GST registration, MSME certification, trademark filing and more.</p><div class="sc-link">Learn More →</div></a>
+    <a href="index.html#contact" class="service-card"><div class="sc-icon">💻</div><h3>Digital Solutions</h3><p>Professional website development, digital transformation and online presence building at affordable rates.</p><div class="sc-link">Learn More →</div></a>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="p-label">How It Works</div>
+  <h2>Simple 4-Step Process</h2>
+  <p>Getting started with Adoviz is effortless. Here's how we work together.</p>
+  <div class="process-grid">
+    <div class="process-step"><div class="step-num">1</div><h3>Contact Us</h3><p>Reach out through our form, WhatsApp or phone call. We're available 24/7.</p></div>
+    <div class="process-step"><div class="step-num">2</div><h3>Free Consultation</h3><p>Our experts analyze your requirements and design the right solution for you.</p></div>
+    <div class="process-step"><div class="step-num">3</div><h3>We Execute</h3><p>Our team handles all documentation, filings and processes with precision.</p></div>
+    <div class="process-step"><div class="step-num">4</div><h3>Ongoing Support</h3><p>Post-service support, reminders and advisory — we stay with you long-term.</p></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Need Help Choosing the Right Service?</h2>
+    <p>Talk to our experts for a free assessment of your business needs and get a custom recommendation.</p>
+    <a href="index.html#contact" class="btn-main">Get Free Consultation &nbsp;→</a>
+  </div>
+</section>
+
+<footer><p>© 2026 <span>Adoviz</span>. All Rights Reserved.</p></footer>
+
+<script>
+const io=new IntersectionObserver((e)=>{ e.forEach(x=>{ if(x.isIntersecting) x.target.classList.add("show"); }); },{threshold:0.1});
+document.querySelectorAll(".service-card,.process-step").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
